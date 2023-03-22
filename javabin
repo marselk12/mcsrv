@@ -1,0 +1,27 @@
+#!/bin/bash
+export MAIN_DIR=$PWD
+cd $PWD
+
+echo -e "-----------------"
+echo -e "Java Installasion"
+echo -e "1. Java 17 [Default]"
+echo -e "2. Java 20"
+javachoice=1
+read javachoice
+
+if [[ -z $javachoice ]]; then
+  echo -e "Invalid argument, restarting execution..."
+  sleep(1)
+  ./javabin
+ elif [[ $javachoice == 1 ]]; then
+  echo -e "> Executing.."
+  echo -e "Installing java 17...."
+  rm -rf bin > /dev/null 2>&1
+  mkdir /bin > /dev/null 2>&1
+  wget -q https://download.oracle.com/java/20/latest/jdk-20_linux-x64_bin.tar.gz -O java.tar.gz > /dev/null 2>&1
+  echo "> Extracting java17.tar.gz"
+  tar -xf java.tar.gz
+  mv "jdk-17.0.1" java_bins
+  cd ..
+  rm -rf bin
+fi
