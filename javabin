@@ -11,7 +11,7 @@ read javachoice
 
 if [[ -z $javachoice ]]; then
   echo -e "Invalid argument, restarting execution..."
-  sleep(1)
+  wait(1)
   ./javabin
  elif [[ $javachoice == 1 ]]; then
   echo -e "> Executing.."
