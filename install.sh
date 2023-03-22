@@ -28,7 +28,13 @@ if [[ -z $choiceForServer ]]; then
 elif [[ $choiceForServer == 1 ]]; then
 	
 	echo "> Running Java Installation..."
+	mkdir tempscript
+	cd tempscript
+wget -O installJava https://raw.githubusercontent.com/marselk12/mcsrv/main/javainstaller
+chmod +x installJava
   ./installJava
+  rm -rf installJava
+  rm -rf InstallJava*
 
 # If choice is 1 then run this command
 elif [[ $choiceForServer == 2 ]]; then
