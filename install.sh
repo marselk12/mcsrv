@@ -37,8 +37,8 @@ require_dir() {
 		if [ ! -z "$downloadauto" ]; then
 			echo "Making a dir named '$1'. Location: $MAIN_DIR"
 			mkdir "$1"
-			sleep 1
-			clear
+            sleep 1
+            clear
 		else
 			echo "Please run this script with super root to make this dir named $1"
 			echo -ne "Or create the directory now? [y/n]: "
@@ -114,11 +114,11 @@ read choiceForServer
 # Installing Java 16 JDK and playit
 #wget -q "https://download.java.net/java/GA/jdk16.0.1/7147401fd7354114ac51ef3e1328291f/9/GPL/openjdk-16.0.1_linux-x64_bin.tar.gz" -O bin/java.tar.xz
 #wget -q "https://download.java.net/java/GA/jdk17.0.1/2a2082e5a09d4267845be086888add4f/12/GPL/openjdk-17.0.1_linux-x64_bin.tar.gz" -O bin/java.tar.xz
-cd $MAIN_DIR/bin
+#cd $MAIN_DIR/bin
 #echo "> Extracting Java JDK 16 to the bin/ folder. [THIS MAY TAKE SOME TIME] Replace it if you want to use older version of JAVA."
 #tar -xf java.tar.xz && mv "jdk-17.0.1" java_bins
 
-cd $MAIN_DIR
+#cd $MAIN_DIR
 # If choice is 0 or null then run this command
 if [[ -z $choiceForServer ]]; then
 
@@ -129,9 +129,9 @@ if [[ -z $choiceForServer ]]; then
 elif [[ $choiceForServer == 1 ]]; then
 	
 	echo "> Running Java Installation..."
-	cd tempscript
-	executable "installjava" "https://github.com/marselk12/mcsrv/raw/main/javabin" "installjava"
-  ./installJava
+	#cd tempscript
+	executable "installjava.sh" "https://github.com/marselk12/mcsrv/raw/main/javabin" "installjava.sh"
+    ./installjava.sh "$downloadauto"
 
 # If choice is 1 then run this command
 elif [[ $choiceForServer == 2 ]]; then
@@ -143,7 +143,7 @@ else
 	echo "> Invaild Respond. Please try again."
 	./install
 fi
-echo "> Installing AFK(Away From Keyboard) Script "
-python3 -m pip install bpytop
-echo ""
+#echo "> Installing AFK(Away From Keyboard) Script "
+#python3 -m pip install bpytop
+#echo ""
 
