@@ -37,6 +37,8 @@ require_dir() {
 		if [ ! -z "$downloadauto" ]; then
 			echo "Making a dir named '$1'. Location: $MAIN_DIR"
 			mkdir "$1"
+			sleep 1
+			clear
 		else
 			echo "Please run this script with super root to make this dir named $1"
 			echo -ne "Or create the directory now? [y/n]: "
