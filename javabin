@@ -1,6 +1,34 @@
 #!/bin/bash
+
 export MAIN_DIR=$PWD
-cd $PWD
+cd ..
+
+require_dir() {
+	if [ ! -d "$1" ]; then
+		if [ ! -z "$2" ]; then
+			echo "Making a dir named '$1'. Location: $MAIN_DIR"
+			mkdir "$1"
+            sleep 1
+		else
+			echo "Please run this script with super root to make this dir named $1"
+			echo -ne "Or create the directory now? [y/n]: "
+			read makedir
+		
+			if [ "$makedir" != "${makedir#[Yy]}" ]; then
+				echo -e "Making a dir named: '$1'"
+				mkdir "$1"
+			else
+				echo -e ""
+				echo -e "Cancelled the installasion."
+				echo -e "Please make a dir named '$1' and start the installasion again"
+				exit
+			fi
+		fi
+	fi
+}
+
+require_dir "bin" "$1"
+clear
 
 echo -e "-----------------"
 echo -e "Java Installasion"
@@ -20,7 +48,9 @@ if [[ -z $javachoice ]]; then
   wget -q https://download.oracle.com/java/20/latest/jdk-20_linux-x64_bin.tar.gz -O java.tar.gz > /dev/null 2>&1
   echo "> Extracting java17.tar.gz"
   tar -xf java.tar.gz
-  mv "jdk-17.0.1" java_bins
-  cd ..
-  rm -rf bin
+  require_dir "java_bins" "$1"
+  mv "jdk-20" java_bins
+  rm -rf java.tar.gz
+  #cd ..
+  #rm -rf bin
 fi
